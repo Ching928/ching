@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>自我介紹</title>
+
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    
+
+
+    html, body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      color: #444;
+    }
+
+    nav a {
+      margin-left: 2srem;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #8b87d6;
+    }
+
+
+nav a:not(:last-child)::after {
+  content: "|";
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+  color: #aaa;
+}
+
+
+    .hero {
+      height: 100vh;
+      background: 
+      linear-gradient(120deg, #8b87d6 0%, #d5cd93 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 0 2rem;
+    }
+
+    .hero h2 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 600px;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 2rem;
+    
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-left: 6px solid #8b87d6;
+      padding-left: 1rem;
+      color: #333;
+      
+    }
+
+    section p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 4rem;
+    }
+     #about, #portfolio, #journal, #contact {
+  scroll-margin-top: 80px;
+}
+    a:hover{
+      color:green;
+    }
+
+    .quote {
+  font-style: italic;
+  color: #8b87d6;
+  border-left: 4px solid #8b87d6;
+  padding-left: 1rem;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      nav {
+        margin-top: 0.5rem;
+      }
+
+      nav a {
+        margin: 0 1rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      section {
+        padding: 1rem;
+      }
+    }
+    ::selection{
+      background-color:yellow ;
+    }
+
+
+main {
+  flex: 3;
+}
+
+aside {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+section {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.slider {
+  position: relative;
+  max-width: 800px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px white;
+}
+#journal p::before{
+  content:"\1F538";
+}
+
+#art {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+#about {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+.timeline-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  width: 200px;
+  border-left: 3px solid #8b87d6;
+}
+
+.timeline li {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 1rem;
+  width: 15px;
+  height: 15px;
+  background-color: #8b87d6;
+  border-radius: 50%;
+}
+
+.timeline li:hover {
+  background-color: #f0f0ff;
+}
+
+.timeline-detail {
+  flex: 1;
+  background: #fafafa;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+
+  </style>
+</head>
+<body>
+
+
+  <header>
+    <h1>自我介紹</h1>
+    <nav>
+      <a href="#top">首頁</a>
+      <a href="#about">關於我</a>
+      <a href="#journal">個人經歷</a>
+      <a href="#art">作品集</a>
+      <a href="#contact">聯絡方式</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>早安你好，很高興認識你</h2>
+    <p></p>
+
+  </div>
+
+
+
+
+  <section id="about">
+    <h2>關於我</h2>
+    
+    <img src="DSC_0492.JPG"width="428.8"height="284.8">
+    <p><strong>姓名:黃郁晴<br>
+      目前就讀科系:國立台東大學綠能與資訊科技學系二年級<br>
+      生日:2005.02.03<br>
+      興趣:旅遊、攝影、聽音樂，散步<br>
+      專長:迷路<br>
+      性格:隨和<br></p></strong>
+    <h3>✨簡單自我介紹</h3>
+    <h4>🎐我的背景</h4>
+    <p>我是黃郁晴，畢業於台南市聖功女子高級中學，目前正就讀國立台東大學綠資系二年級。我來自台南市一個平凡的家庭，從小父母就教導我要盡力做好每件事的概念，因此我在做事都會盡自己最大的力量去完成。因為家庭常常出遊的關係，所以我也會享受生活，從學業及生活中取的平衡。因此在高中選填志願時來到台東大學讀書及享受生活。</p>
+    <h4>🎐在大學了然後呢?</h4>
+    <p>從小我就接觸了各種才藝課程，也一直在不斷探索自己的興趣。雖然沒有特別專精於某一項，但這些多元的學習經驗讓我累積了不少不同領域的視野與能力。我一直相信，廣泛的探索能幫助我找到更貼近自己的未來方向，另外因為很喜歡日本文化，更在大學閒暇之餘學習日語增加自己的外語能力。
+目前我還沒完全確定未來想走的路，但我希望能將過去所學整合起來，朝著跨領域發展邁進，成為一位有多元能力的斜槓大學生。<br>回到標題，除了參與系上的活動，我也喜歡參加各種講座，從講者的經歷中汲取靈感，替自己的未來預作準備。在課業比較沒那麼繁重的時候，我會騎著車到台東各地走走，享受與西部截然不同的風景。<br>
+攝影對我來說不只是興趣，更是一種記錄生活的方式。雖然還稱不上專業，但我已經拍下了許多讓我難忘的片段，也希望能在影像中留下當下的情感與故事。</p>
+  
+  <div class="quote">每一天都要去相信自己，每一天都要去超越自己。</div>
+
+  </blockquote>
+</section>
+
+  <section id="journal">
+      <h2>個人經歷</h2>
+      <p>參加南島祭續攝影比賽獲得佳作</p>
+      <p>參加東大空間文創比賽</p>
+      <p>擔任2023D14東大校園挑戰賽志工</p>
+      <p>擔任系學會資訊副股</p>
+      <p>參加東大系際盃羽球賽</p>
+  </section>
+
+
+  <section id="art">
+    <h2>作品集</h2>
+    <p>一個喜歡拍照、旅行與甜點的人類。</p><br>
+    <strong>以<海>、<山>、<點心>、<人文活動> 、<星空> 為主題，一組三張的照片!</strong>
+  
+
+<!-- 放大圖功能 -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="">
+</div>
+
+
+<div class="gallery">
+  <img src="3ff15517-98a7-4c6a-814b-0b6b480dc6af.jpg" alt="作品1">
+  <img src="0489e8c4-615c-40b8-8375-b2ec625840c2.jpg" alt="作品2">
+  <img src="DSC_0534.JPG" alt="作品3">
+  
+  <img src="15e1d0c1-a871-4962-ad86-779e4cd5f75c.jpg" alt="作品4">
+  <img src="9167621b-a5a2-460c-9ba5-bc2fadbfac4e.jpg" alt="作品5">
+  <img src="DSC_0092.JPG" alt="作品6">
+  
+  <img src="20240506_111252.jpg" alt="作品7" >
+  <img src="22.jpg" alt="作品8">
+  <img src="DSC_0706.JPG" alt="作品9">
+  
+  <img src="15123.jpg" alt="作品10">
+  <img src="DSC_0223改.JPG" alt="作品11">
+  <img src="DSC_0238.JPG" alt="作品12">
+  
+  <img src="20240615_220540.jpg" alt="作品13">
+  <img src="eb8cfeeb-df98-4316-96aa-d0b73d7d5f0b.jpg" alt="作品14">
+  <img src="20231213_224600.jpg" alt="作品15">
+  
+</div>
+</section>
+
+
+  <section id="contact">
+    <h2> 聯絡方式 </h2>
+    <p> 電話:0928xxxxxx</p>
+    <p> gmail:<a href =mailto:11222109@gm.nttu.edu.tw>11222109@gm.nttu.edu.tw</a></p>
+    <p>Instagram:<a href="https://www.instagram.com/yuqing2150/">@yuqing2150</a></p>
+    <p>  Facebook:<a href="https://www.facebook.com/huang.yu.qing.74038?locale=zh_TW">黃郁晴</p></a>
+    <p> X:<a href="https://mainichi-nonbiri.com/japanese-grammar/">wklfhlkq </p>
+</a></section>
+
+<div style="font-family: 'Helvetica Neue', sans-serif; text-align: center; padding: 1em;">
+  <p style="font-size: 1.1em;">✨ 如果你喜歡，是不是該支持我一下<del>其實我收不到</del></p>
+  <button 
+    id="likeButton"
+    style="background-color: #fdfdfd; border: 1px solid #ddd; border-radius: 999px; padding: 0.6em 1.2em; font-size: 1em; cursor: pointer; transition: 0.2s; box-shadow: 2px 2px 8px rgba(0,0,0,0.05);"
+    onclick="incrementLike()">
+    🤍 按一下啦 <span id="likeCount">0</span>
+  </button>
+
+<footer>
+  <address>
+    &copy; 有任何問題歡迎交流 只是可能會等一段時間:) 
+  </address>
+</footer>
+
+  </section>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelector('.slides');
+const totalSlides = document.querySelectorAll('.slide').length;
+
+function moveSlide(direction) {
+  currentSlide += direction;
+  if (currentSlide < 0) currentSlide = totalSlides - 1;
+  if (currentSlide >= totalSlides) currentSlide = 0;
+  slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function openLightbox(img) {
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  lightboxImg.src = img.src;
+  lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+
+
+  let likeCount = 0;
+
+  function incrementLike() {
+    likeCount++;
+    document.getElementById("likeCount").textContent = likeCount;
+  }
+
+
+</script>
+
+
+</body>
+</html>
